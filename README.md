@@ -1,4 +1,3 @@
-<img width="1016" height="220" alt="image" src="https://github.com/user-attachments/assets/f1b664c8-0141-4985-9a31-073b7bfb4fa7" /># Multi-Container Runtime
 
 A lightweight Linux container runtime in C with a long-running supervisor and a kernel-space memory monitor.
 
