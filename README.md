@@ -130,73 +130,58 @@ make -C boilerplate ci
 ### Screenshot 1 — Multi-container supervision
 <img width="1016" height="220" alt="image" src="https://github.com/user-attachments/assets/d8ab27a0-2ba0-4eea-a612-6524c8c4cb1f" />
 
+<img width="1016" height="293" alt="image" src="https://github.com/user-attachments/assets/0c914fc8-3399-450b-9136-f338b0f5c413" />
+
 
 Caption: Both containers running simultaneously under a single supervisor process.
 
 ### Screenshot 2 — Metadata tracking
 
-```
-ID               PID      STATE      STARTED              SOFT(MiB)  HARD(MiB)  REASON
-beta             3821     running    2026-04-03 18:17:08  40         64         running
-alpha            3803     stopped    2026-04-03 18:16:57  40         64         stopped
-```
+<img width="1016" height="165" alt="image" src="https://github.com/user-attachments/assets/d6eea543-d4f3-4f44-abd1-89e7d72b9015" />
 
 Caption: `ps` command showing container ID, host PID, state, start time, memory limits, and termination reason.
 
 ### Screenshot 3 — Bounded-buffer logging
 
-```
-$ sudo ./engine logs test
-Log for 'test':
-hello from container
-```
+<img width="1016" height="248" alt="image" src="https://github.com/user-attachments/assets/f86f8e34-ab9f-4fe9-b6eb-7222dfec6c66" />
+
 
 Caption: Container stdout captured via pipe, passed through bounded buffer, and written to log file by consumer thread.
 
 ### Screenshot 4 — CLI and IPC
 
-```
-$ sudo ./engine start alpha ./rootfs-alpha /bin/sh
-Started container 'alpha' pid=3803
-```
+<img width="1016" height="143" alt="image" src="https://github.com/user-attachments/assets/193d70c9-7975-4caf-a405-036d50b2bf37" />
+
 
 Caption: CLI client connects to supervisor over UNIX domain socket at `/tmp/mini_runtime.sock`, sends request, receives response.
 
 ### Screenshot 5 — Soft-limit warning
 
-```
-[container_monitor] SOFT LIMIT container=memtest pid=3910 rss=17289216 limit=10485760
-```
+<img width="1016" height="584" alt="image" src="https://github.com/user-attachments/assets/81acbd40-cba4-4a04-a6ca-f58df7644c9d" />
+
 
 Caption: Kernel module logs a warning when container RSS exceeds soft limit of 10 MiB.
 
 ### Screenshot 6 — Hard-limit enforcement
 
-```
-[container_monitor] HARD LIMIT container=memtest pid=3910 rss=25677824 limit=20971520
-$ sudo ./engine ps
-memtest  3910  killed  ...  hard_limit_killed
-```
+<img width="1016" height="471" alt="image" src="https://github.com/user-attachments/assets/6912a7a6-1ecd-4158-866b-9a22644c1f0b" />
+
 
 Caption: Kernel module sends SIGKILL when RSS exceeds 20 MiB hard limit. Supervisor metadata shows `hard_limit_killed`.
 
 ### Screenshot 7 — Scheduling experiment
 
-```
-c1 (nice 10): elapsed=1,2,3,4,5,6,7,12,13  done in 20s
-c2 (nice -5): elapsed=1,6,7                 done in 20s
-```
+<img width="1016" height="275" alt="image" src="https://github.com/user-attachments/assets/b4435fcb-86ee-40a9-b910-7cf8dbe5e298" />
+<img width="1016" height="275" alt="image" src="https://github.com/user-attachments/assets/4134da2e-101f-4f41-b2c4-06e417433b14" />
+<img width="1016" height="275" alt="image" src="https://github.com/user-attachments/assets/a12b91a3-7257-429c-8861-61b27b72a0bc" />
+
 
 Caption: c2 (nice -5, higher priority) received larger CPU time slices. c1 (nice 10) was preempted, visible as gaps in progress reporting.
 
 ### Screenshot 8 — Clean teardown
 
-```
-[supervisor] Shutting down...
-[supervisor] Exited cleanly.
-$ ps aux | grep cpu_hog
-(no output)
-```
+<img width="1016" height="272" alt="image" src="https://github.com/user-attachments/assets/2487a6d7-4083-422a-814a-c05279daeef0" />
+
 
 Caption: Supervisor stops all containers, joins logging thread, and frees resources. No zombie processes remain.
 
