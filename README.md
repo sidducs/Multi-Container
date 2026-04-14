@@ -1,4 +1,4 @@
-# Multi-Container Runtime
+<img width="1016" height="220" alt="image" src="https://github.com/user-attachments/assets/f1b664c8-0141-4985-9a31-073b7bfb4fa7" /># Multi-Container Runtime
 
 A lightweight Linux container runtime in C with a long-running supervisor and a kernel-space memory monitor.
 
@@ -128,12 +128,8 @@ make -C boilerplate ci
 ## 3. Demo Screenshots
 
 ### Screenshot 1 — Multi-container supervision
+<img width="1016" height="220" alt="image" src="https://github.com/user-attachments/assets/d8ab27a0-2ba0-4eea-a612-6524c8c4cb1f" />
 
-```
-ID               PID      STATE      STARTED              SOFT(MiB)  HARD(MiB)  REASON
-beta             3821     running    2026-04-03 18:17:08  40         64         running
-alpha            3803     running    2026-04-03 18:16:57  40         64         running
-```
 
 Caption: Both containers running simultaneously under a single supervisor process.
 
