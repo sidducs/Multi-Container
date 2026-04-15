@@ -1,7 +1,5 @@
 
-A lightweight Linux container runtime in C with a long-running supervisor and a kernel-space memory monitor.
-
----
+This project implements a lightweight container runtime similar to Docker using Linux namespaces and a kernel module for memory monitoring and scheduling analysis.
 
 ## 1. Team Information
 
@@ -316,3 +314,5 @@ cpu_hog done duration=20
 c1 was preempted between elapsed 7 and elapsed 12 — a 4-second window where c2 was consuming the CPU continuously. c2 received longer uninterrupted CPU slices, visible as larger gaps between its own progress prints.
 
 The Linux CFS scheduler allocated CPU time proportional to process weight. A process with nice -5 has significantly higher weight than one with nice +10. This matches CFS behavior: the high-weight process receives more CPU time per scheduling period, causing the low-weight process to be preempted more often and wait longer before being rescheduled.
+
+This project successfully demonstrates key operating system concepts including process isolation, inter-process communication, memory management, and scheduling using a practical container runtime implementation.
